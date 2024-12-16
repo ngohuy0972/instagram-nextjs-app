@@ -2,7 +2,7 @@
 import { MongoClient } from 'mongodb';
 
 const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
-const dbName = process.env.MONGODB_DB || 'mydatabase';
+const dbName = process.env.MONGODB_DB || 'nextjs-instagram-db';
 
 let cachedClient = null;
 let cachedDb = null;
