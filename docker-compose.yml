@@ -9,4 +9,13 @@ services:
       - .:/app
       - /app/node_modules
     environment:
-      - NODE_ENV=/.env
+      - NODE_ENV=.evn
+      - MONGODB_URI=mongodb://mongo:27017
+      - MONGODB_DB=nextjs-instagram-db
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"

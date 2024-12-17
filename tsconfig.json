@@ -15,13 +15,20 @@
     "incremental": true,
     "plugins": [
       {
-        "name": "next"
+        "name": "next",
+      },
+      {
+        "name": "prettier-plugin-tailwindcss"
       }
     ],
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@icons": ["src/app/icon/index"],
+      "@utils": ["src/app/utils/index"],
+      "@types": ["src/app/utils/index"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/**/*", "*.ts"],
+  "exclude": ["node_modules", "dist"]
 }
