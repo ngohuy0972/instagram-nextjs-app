@@ -33,7 +33,7 @@ const Header: React.FC = () => {
           >
             {openDropdown && (
               <div
-                className="absolute -left-32 z-10 mt-10 w-40 rounded-lg bg-white shadow-lg  focus:outline-none"
+                className="absolute -left-32 z-1000 mt-10 w-40 rounded-lg bg-white shadow-lg  focus:outline-none"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
