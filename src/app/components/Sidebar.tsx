@@ -1,78 +1,115 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   HeartIcon,
+  HeartSolidIcon,
   HomeIcon,
+  HomeSolidIcon,
   LogoutIcon,
   PlusIcon,
   SearchIcon,
   UserIcon,
+  UserSolidIcon,
 } from "../icons/icons";
 import { colors } from "../utils";
 import logo from "../../public/logo.png";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import CreatePostModal from "./CreatePostModal";
 
 export const Sidebar: React.FC = () => {
   const route = useRouter();
+  const path = usePathname();
+  const isHomeTab = path === "/";
+  const isSearchTab = path === "/search";
+  const isCreatePostTab = path === "/post";
+  const isNotificationTab = path === "/notification";
+  const isProfileTab = path === "/profile";
+
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="flex flex-col items-center sidebar w-24 h-screen fixed top-0 left-0">
+    <div className="sidebar fixed left-0 top-0 flex h-screen w-24 flex-col items-center">
       <div className="p-6">
-        <Image src={logo} alt="logo" width={30} height={30} />
+        <Image
+          src={logo}
+          alt="logo"
+          width={30}
+          height={30}
+          onClick={() => route.replace("/")}
+        />
       </div>
-      <div className="flex-grow flex flex-col justify-center">
+      <div className="flex flex-grow flex-col justify-center">
         <ul className="w-full">
           <li
-            className="  hover:scale-105 p-4 my-4 hover:bg-gray-100 hover:rounded-lg"
-            onClick={() => route.push("/")}
+            className={`my-4 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
+            onClick={() => route.replace("/")}
           >
-            <HomeIcon
-              color={colors.grayIcon}
-              className="size-7"
-              strokeWidth={2.5}
-            />
+            {isHomeTab ? (
+              <HomeSolidIcon className="size-7" />
+            ) : (
+              <HomeIcon
+                color={colors.grayIcon}
+                className="size-7"
+                strokeWidth={2.5}
+              />
+            )}
           </li>
           <li
-            className="   hover:scale-105 p-4 my-4 hover:bg-gray-100 hover:rounded-lg"
-            onClick={() => route.push("/search")}
+            className={`my-4 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
+            onClick={() => route.replace("/search")}
           >
             <SearchIcon
-              color={colors.grayIcon}
+              color={isSearchTab ? colors.black : colors.grayIcon}
               className="size-7"
               strokeWidth={2.5}
             />
           </li>
-          <li className=" bg-gray-100 rounded-lg  hover:scale-105 p-4 my-4 hover:bg-gray-200 hover:rounded-lg">
+          <li
+            className="my-4 rounded-lg bg-gray-100 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-200"
+            onClick={() => setIsOpen(true)}
+          >
             <PlusIcon
-              color={colors.grayIcon}
+              color={isCreatePostTab ? colors.black : colors.grayIcon}
               className="size-7"
               strokeWidth={2.5}
             />
           </li>
+          {isOpen && <CreatePostModal callback={() => setIsOpen(false)} />}
           <li
-            className="hover:scale-105 p-4 my-4 hover:bg-gray-100 hover:rounded-lg"
-            onClick={() => route.push("/notification")}
+            className={`my-4 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
+            onClick={() => route.replace("/notification")}
           >
-            <HeartIcon
-              color={colors.grayIcon}
-              className="size-7"
-              strokeWidth={2.5}
-            />
+            {isNotificationTab ? (
+              <HeartSolidIcon className="size-7" />
+            ) : (
+              <HeartIcon
+                color={colors.grayIcon}
+                className="size-7"
+                strokeWidth={2.5}
+              />
+            )}
           </li>
           <li
-            className="hover:scale-105 p-4 my-4 hover:bg-gray-100 hover:rounded-lg"
-            onClick={() => route.push("/profile")}
+            className={`my-4 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
+            onClick={() => route.replace("/profile")}
           >
-            <UserIcon
-              color={colors.grayIcon}
-              className="size-7"
-              strokeWidth={2.5}
-            />
+            {isProfileTab ? (
+              <UserSolidIcon className="size-7" />
+            ) : (
+              <UserIcon
+                color={colors.grayIcon}
+                className="size-7"
+                strokeWidth={2.5}
+              />
+            )}
           </li>
         </ul>
       </div>
-      <div className=" hover:scale-105 p-4 my-4  hover:bg-gray-100 hover:rounded-lg">
+      <div
+        className={`my-4 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
+      >
         <LogoutIcon
           color={colors.grayIcon}
           className="size-7"
