@@ -3,7 +3,7 @@ import realmardrid from "../../public/RealMadrid.png";
 import arsenal from "../../public/Arsenal.png";
 import porsche from "../../public/author_avatar.jpg";
 
-export const followSuggestion = [
+export const notifications = [
   {
     name: "Porsche Club",
     author_avatar: porsche,

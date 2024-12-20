@@ -17,11 +17,11 @@ interface ArticleProps {
 export const Article: React.FC<{ article: ArticleProps }> = ({ article }) => {
   const isPhotos = article.photos.length > 1;
   return (
-    <div className="flex flex-row p-5 border-b-xs border-borderLine">
+    <div className="flex flex-row border-b-xs border-borderLine p-5">
       {/* Avatar author */}
       <div className="">
         <Image
-          className="rounded-full"
+          className="rounded-full p-2"
           src={article.author_avatar}
           alt="avatar"
           height={35}
@@ -31,24 +31,24 @@ export const Article: React.FC<{ article: ArticleProps }> = ({ article }) => {
       {/* Article */}
       <div className="w-full px-3">
         <div className="flex w-full flex-row">
-          <span className="font-medium text-sm flex-grow ">
+          <span className="flex-grow text-sm font-medium">
             {article.author} {" . "}
-            <span className="font-medium text-[11px] text-textSecondary ">
+            <span className="text-[11px] font-medium text-textSecondary">
               {article.date}
             </span>
           </span>
-          <div className="font-bold -mt-2" onClick={() => alert("clicked")}>
+          <div className="-mt-2 font-bold" onClick={() => alert("clicked")}>
             ...
           </div>
         </div>
         <div>
-          <div className="text-xs my-2 ">{article.content}</div>
-          <div className="flex overflow-x-scroll no-scrollbar rounded-lg">
+          <div className="my-2 text-xs">{article.content}</div>
+          <div className="no-scrollbar flex overflow-x-scroll rounded-lg">
             {article.photos.map((photo, index) => {
               return (
-                <div key={index} className="flex-shrink-0 ">
+                <div key={index} className="flex-shrink-0">
                   <Image
-                    className="rounded-lg mr-2"
+                    className="mr-2 rounded-lg"
                     src={photo}
                     alt="photo"
                     width={isPhotos ? 250 : 300}
@@ -59,18 +59,18 @@ export const Article: React.FC<{ article: ArticleProps }> = ({ article }) => {
             })}
           </div>
         </div>
-        <div className="pt-4 flex flex-row">
-          <div className="flex flex-row mr-5 items-center">
+        <div className="flex flex-row pt-4">
+          <div className="mr-5 flex flex-row items-center">
             <HeartIcon className="size-5" strokeWidth={1.5} />
-            <span className="text-xs ml-1">{article.likes}</span>
+            <span className="ml-1 text-xs">{article.likes}</span>
           </div>
-          <div className="flex flex-row mr-5 items-center">
+          <div className="mr-5 flex flex-row items-center">
             <CommentIcon className="size-5" strokeWidth={1.5} />
-            <span className="text-xs ml-1">{article.comments}</span>
+            <span className="ml-1 text-xs">{article.comments}</span>
           </div>
-          <div className="flex flex-row mr-5 items-center">
+          <div className="mr-5 flex flex-row items-center">
             <RepostIcon className="size-5" strokeWidth={1.5} />
-            <span className="text-xs ml-1">{article.reposts}</span>
+            <span className="ml-1 text-xs">{article.reposts}</span>
           </div>
         </div>
       </div>

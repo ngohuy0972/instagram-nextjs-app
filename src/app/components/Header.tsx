@@ -35,13 +35,14 @@ const Header: React.FC = () => {
         <div className="flex flex-row justify-center">
           <span className="mr-4 text-lg font-bold">{handleHeaderTitle()}</span>
           <div className="hover:scale-110" onClick={handleClick}>
-            <div
+            <button
+              type="button"
               className={`transform transition-transform duration-300 ${
                 openDropdown ? "rotate-0" : "-rotate-180"
               } rounded-full border-[1px] border-gray-300 bg-white p-1 shadow-md`}
             >
               <ChevronUpIcon className="size-4" strokeWidth={3} />
-            </div>
+            </button>
           </div>
           <div
             className={`ease-custom transform transition duration-500 ${

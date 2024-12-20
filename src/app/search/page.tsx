@@ -8,7 +8,7 @@ import { FollowSuggestion } from "../components/FollowSuggestion";
 
 const Search: React.FC = () => {
   return (
-    <div className="no-scrollbar fixed top-20 h-screen w-1/2 overflow-y-scroll rounded-tl-3xl rounded-tr-3xl border-xs border-b-0 border-borderLine bg-white pb-20 shadow">
+    <div className="no-scrollbar fixed top-20 h-screen w-1/2 rounded-tl-3xl rounded-tr-3xl border-xs border-b-0 border-borderLine bg-white pb-20 shadow">
       <div className="m-5 flex w-full flex-col">
         <div className="flex w-[94%] rounded-2xl border-xs border-borderLine">
           <div className="flex w-full items-center justify-center rounded-2xl bg-background">

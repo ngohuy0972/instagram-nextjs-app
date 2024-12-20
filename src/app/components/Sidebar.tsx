@@ -31,7 +31,7 @@ export const Sidebar: React.FC = () => {
 
   return (
     <div className="sidebar fixed left-0 top-0 flex h-screen w-24 flex-col items-center">
-      <div className="p-6">
+      <button className="p-6" type="button">
         <Image
           src={logo}
           alt="logo"
@@ -39,11 +39,12 @@ export const Sidebar: React.FC = () => {
           height={30}
           onClick={() => route.replace("/")}
         />
-      </div>
+      </button>
       <div className="flex flex-grow flex-col justify-center">
-        <ul className="w-full">
-          <li
-            className={`my-4 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
+        <ul className="w-full px-5">
+          <button
+            type="button"
+            className={`my-3 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
             onClick={() => route.replace("/")}
           >
             {isHomeTab ? (
@@ -55,9 +56,10 @@ export const Sidebar: React.FC = () => {
                 strokeWidth={2.5}
               />
             )}
-          </li>
-          <li
-            className={`my-4 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
+          </button>
+          <button
+            type="button"
+            className={`my-3 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
             onClick={() => route.replace("/search")}
           >
             <SearchIcon
@@ -65,9 +67,10 @@ export const Sidebar: React.FC = () => {
               className="size-7"
               strokeWidth={2.5}
             />
-          </li>
-          <li
-            className="my-4 rounded-lg bg-gray-100 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-200"
+          </button>
+          <button
+            type="button"
+            className="my-3 rounded-lg bg-gray-100 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-200"
             onClick={() => setIsOpen(true)}
           >
             <PlusIcon
@@ -75,10 +78,11 @@ export const Sidebar: React.FC = () => {
               className="size-7"
               strokeWidth={2.5}
             />
-          </li>
+          </button>
           {isOpen && <CreatePostModal callback={() => setIsOpen(false)} />}
-          <li
-            className={`my-4 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
+          <button
+            type="button"
+            className={`my-3 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
             onClick={() => route.replace("/notification")}
           >
             {isNotificationTab ? (
@@ -90,9 +94,10 @@ export const Sidebar: React.FC = () => {
                 strokeWidth={2.5}
               />
             )}
-          </li>
-          <li
-            className={`my-4 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
+          </button>
+          <button
+            type="button"
+            className={`my-3 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
             onClick={() => route.replace("/profile")}
           >
             {isProfileTab ? (
@@ -104,18 +109,19 @@ export const Sidebar: React.FC = () => {
                 strokeWidth={2.5}
               />
             )}
-          </li>
+          </button>
         </ul>
       </div>
-      <div
-        className={`my-4 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
+      <button
+        type="button"
+        className={`my-3 p-4 hover:scale-105 hover:rounded-lg hover:bg-gray-100`}
       >
         <LogoutIcon
           color={colors.grayIcon}
           className="size-7"
           strokeWidth={2.5}
         />
-      </div>
+      </button>
     </div>
   );
 };
